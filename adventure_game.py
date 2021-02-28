@@ -46,7 +46,9 @@ def riddle():
         print_pause("You are my dinner today")
 
 def combat():
-    print("Hello, from combat!")
+
+    print("Hello, from combat function!")
+
     return None
 
 
