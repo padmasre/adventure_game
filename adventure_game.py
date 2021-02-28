@@ -29,14 +29,14 @@ def riddle():
     print_pause("You think you are very clever.")
     print_pause("You should use only 1 word to answer my riddles.")
 
-    list_of_riddles = list(
+    list_of_riddles = [
         {'question': 'What has a face and two hands, but no arms or legs?',
          'answer': 'clock'},
         {'question': (
           'I start out tall, but the longer I stand, the shorter I grow. '
           'What am I?'),
          'answer': 'candle'},
-        {'question': 'How many months have 28 days?', 'answer': 'all'})
+        {'question': 'How many months have 28 days?', 'answer': 'all'}]
 
     riddle_dict = random.choice(list_of_riddles)
 
