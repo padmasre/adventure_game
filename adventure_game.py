@@ -1,9 +1,8 @@
 #!/usr/local/bin/python3
 import time
 import random
-item = []
 
-
+# print message with time delay
 def print_pause(message_to_print):
     print(message_to_print)
     time.sleep(0.5)
@@ -24,7 +23,7 @@ def intro():
         else:
             print_pause("Enter the correct option")
 
-
+# execute the riddle scenario
 def riddle():
 
     print_pause("You think you are very clever.")
@@ -53,7 +52,7 @@ def riddle():
         print_pause("You gave an wrong answer")
         print_pause("You are my dinner today")
 
-
+# execute the combat scenario
 def combat():
 
     print_pause("You get ready to fight the monster ")
@@ -66,16 +65,22 @@ def combat():
         print_pause("You are defeated. Monster will be having you for his "
                     "supper")
 
-
+#
 if __name__ == '__main__':
 
     while True:
+        # presenting intro to user
         output_intro = intro()
+
+        # calling scenario based on user choice
         if output_intro == 1:
             riddle()
         else:
             combat()
+
+        # Check if user wants to play again
         play_again = input("Would you like to play again? (yes / no) ").lower()
 
+        # Exit if user is done playing
         if play_again == 'no':
             break
