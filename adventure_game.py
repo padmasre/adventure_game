@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 import time
 import random
+item = []
 
 
 def print_pause(message_to_print):
@@ -13,7 +14,7 @@ def intro():
 
     print_pause("A scary monster controls the city gates")
     print_pause("To get out of the city, you have to either defeat the monster"
-                "in combat or answer his silly riddles correclty")
+                "in combat or answer his silly riddles correctly")
     print_pause("Those who don't win in either tasks become the monster's"
                 "supper")
     while True:
@@ -55,16 +56,26 @@ def riddle():
 
 def combat():
 
-    print("Hello, from combat function!")
+    print_pause("You get ready to fight the monster ")
+    find_sword = input("Do you have a sword? Type yes or no ").lower()
 
-    return None
+    if "yes" in find_sword:
+        print_pause("You slash the monster and escape")
+    else:
+        print_pause("You have forgotten to bring your sword to fight")
+        print_pause("You are defeated. Monster will be having you for his "
+                    "supper")
 
 
 if __name__ == '__main__':
 
-    output_intro = intro()
+    while True:
+        output_intro = intro()
+        if output_intro == 1:
+            riddle()
+        else:
+            combat()
+        play_again = input("Would you like to play again? (yes / no) ").lower()
 
-    if output_intro == 1:
-        riddle()
-    else:
-        combat()
+        if play_again == 'no':
+            break
