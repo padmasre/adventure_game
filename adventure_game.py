@@ -2,10 +2,11 @@
 import time
 import random
 
+
 # print message with time delay
 def print_pause(message_to_print):
     print(message_to_print)
-    time.sleep(0.5)
+    time.sleep(2)
 
 
 # intro to what is happening
@@ -22,6 +23,7 @@ def intro():
             return option
         else:
             print_pause("Enter the correct option")
+
 
 # execute the riddle scenario
 def riddle():
@@ -52,20 +54,29 @@ def riddle():
         print_pause("You gave an wrong answer")
         print_pause("You are my dinner today")
 
+
 # execute the combat scenario
 def combat():
 
+    list_of_options = [
+            "You have a sword but it is very blunt. Monster kills you",
+            ("You think you had sword but that is a wooden stick."
+             " Monster will have you for dinner"),
+            "You slash the monster and escape"
+            ]
+
     print_pause("You get ready to fight the monster ")
+
     find_sword = input("Do you have a sword? Type yes or no ").lower()
 
     if "yes" in find_sword:
-        print_pause("You slash the monster and escape")
+        print_pause(random.choice(list_of_options))
     else:
         print_pause("You have forgotten to bring your sword to fight")
         print_pause("You are defeated. Monster will be having you for his "
                     "supper")
 
-#
+
 if __name__ == '__main__':
 
     while True:
