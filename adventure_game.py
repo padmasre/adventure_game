@@ -17,6 +17,7 @@ def intro():
                 "in combat or answer his silly riddles correctly")
     print_pause("Those who don't win in either tasks become the monster's"
                 "supper")
+
     while True:
         option = int(input("Enter 1 for riddle or 2 for combat: "))
         if option in [1, 2]:
@@ -79,7 +80,8 @@ def combat():
 
 if __name__ == '__main__':
 
-    while True:
+    play = True
+    while play:
         # presenting intro to user
         output_intro = intro()
 
@@ -90,8 +92,14 @@ if __name__ == '__main__':
             combat()
 
         # Check if user wants to play again
-        play_again = input("Would you like to play again? (yes / no) ").lower()
+        while True:
+            play_again = (
+                input("Would you like to play again? (yes / no) ").lower())
 
-        # Exit if user is done playing
-        if play_again == 'no':
-            break
+            # Exit if user is done playing
+            if play_again in ['yes', 'no']:
+                if play_again == 'no':
+                    play = False
+                    break
+                elif play_again == 'yes':
+                    break
