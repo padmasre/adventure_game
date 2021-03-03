@@ -4,9 +4,19 @@ import random
 
 
 # print message with time delay
-def print_pause(message_to_print):
+def print_pause(message_to_print, pause=1):
     print(message_to_print)
-    time.sleep(2)
+    time.sleep(pause)
+
+
+# check if user is passing the right value
+def check_valid_input(for_1, for_2):
+    while True:
+        option = int(input(f"Enter 1 for {for_1} or 2 for {for_2}: "))
+        if option in [1, 2]:
+            return option
+        else:
+            print_pause("Enter the correct option")
 
 
 # intro to what is happening
@@ -15,15 +25,12 @@ def intro():
     print_pause("A scary monster controls the city gates")
     print_pause("To get out of the city, you have to either defeat the monster"
                 "in combat or answer his silly riddles correctly")
-    print_pause("Those who don't win in either tasks become the monster's"
+    print_pause("Those who don't win in either tasks become the monster's "
                 "supper")
 
-    while True:
-        option = int(input("Enter 1 for riddle or 2 for combat: "))
-        if option in [1, 2]:
-            return option
-        else:
-            print_pause("Enter the correct option")
+    valid_input = check_valid_input(for_1='riddle', for_2='combat')
+
+    return valid_input
 
 
 # execute the riddle scenario
@@ -66,16 +73,28 @@ def combat():
             "You slash the monster and escape"
             ]
 
-    print_pause("You get ready to fight the monster ")
+    print_pause("You get ready to fight the monster.Do you have a sword? ")
+    valid_input = check_valid_input(for_1='yes', for_2='no')
 
-    find_sword = input("Do you have a sword? Type yes or no ").lower()
-
-    if "yes" in find_sword:
+    if valid_input == 1:
         print_pause(random.choice(list_of_options))
     else:
         print_pause("You have forgotten to bring your sword to fight")
         print_pause("You are defeated. Monster will be having you for his "
                     "supper")
+
+
+# Check if user wants to play again
+def play_again():
+
+    print_pause("Would you like to play again?")
+
+    valid_input = check_valid_input(for_1='playing again', for_2='exit')
+
+    if valid_input == 1:
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
@@ -91,15 +110,4 @@ if __name__ == '__main__':
         else:
             combat()
 
-        # Check if user wants to play again
-        while True:
-            play_again = (
-                input("Would you like to play again? (yes / no) ").lower())
-
-            # Exit if user is done playing
-            if play_again in ['yes', 'no']:
-                if play_again == 'no':
-                    play = False
-                    break
-                elif play_again == 'yes':
-                    break
+        play = play_again()
