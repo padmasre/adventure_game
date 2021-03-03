@@ -12,10 +12,14 @@ def print_pause(message_to_print, pause=1):
 # check if user is passing the right value
 def check_valid_input(for_1, for_2):
     while True:
-        option = int(input(f"Enter 1 for {for_1} or 2 for {for_2}: "))
-        if option in [1, 2]:
-            return option
-        else:
+        option = input(f"Enter 1 for {for_1} or 2 for {for_2}: ")
+        try:
+            option = int(option)
+            if option in [1, 2]:
+                return option
+            else:
+                print_pause("Enter the correct option")
+        except ValueError:
             print_pause("Enter the correct option")
 
 
